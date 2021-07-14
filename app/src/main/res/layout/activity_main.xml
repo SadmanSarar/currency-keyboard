@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/txtCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerRow1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="AED 00.00" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerRow2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/btnNum1"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum2"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum3"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerRow3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/btnNum4"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum5"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum6"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum5"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/containerRow4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/btnNum7"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="7"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum8"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum8"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="8"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum9"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum9"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="9"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum8"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/containerRow4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/btnNumDot"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="."
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNum0"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNum0"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/btnNumDel"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNumDot"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnNumDel"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_numeric_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="D"
+            android:textColor="@color/text_color_numeric_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnNum0"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
