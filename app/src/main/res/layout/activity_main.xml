@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/text_inactive"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/containerRow1"
         app:layout_constraintEnd_toEndOf="parent"
