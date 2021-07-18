@@ -6,11 +6,16 @@ import android.text.style.ForegroundColorSpan
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import me.sadmansarar.currencykeyboard.providers.ColorProvider
+import me.sadmansarar.currencykeyboard.providers.StringProvider
 import java.text.DecimalFormat
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val colorProvider: ColorProvider) : ViewModel() {
+open class MainViewModel @Inject constructor(
+    private val colorProvider: ColorProvider,
+    private val stringProvider: StringProvider
+) : ViewModel() {
     companion object {
         const val NUM_DEL = "NUM_DEL"
         const val NUM_DOT = "."
@@ -40,21 +45,37 @@ class MainViewModel @Inject constructor(private val colorProvider: ColorProvider
         updateText()
     }
 
-    private fun updateText() {
+    open fun updateText() {
         val createTextFromDigit = createTextFromDigit(enteredNumbers)
         textToShow.postValue(createTextFromDigit)
     }
 
     internal fun createTextFromDigit(list: List<String>): Spannable {
+        val initialText = stringProvider.getString(R.string.currency_text_initial)
         if (list.isEmpty()) {
-            val span: Spannable = SpannableString("AED 0.00")
-            span.setSpan(ForegroundColorSpan(colorProvider.getInactiveTextColor()), 0, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            val span: Spannable = SpannableString(initialText)
+            span.setSpan(
+                ForegroundColorSpan(colorProvider.getInactiveTextColor()),
+                0,
+                initialText.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             return span
         }
         if (list.size == 1 && list.contains(NUM_DOT)) {
-            val span: Spannable = SpannableString("AED 0.00")
-            span.setSpan(ForegroundColorSpan(colorProvider.getActiveTextColor()), 0, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            span.setSpan(ForegroundColorSpan(colorProvider.getInactiveTextColor()), 7, 8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            val span: Spannable = SpannableString(initialText)
+            span.setSpan(
+                ForegroundColorSpan(colorProvider.getActiveTextColor()),
+                0,
+                initialText.indexOf(NUM_DOT),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            span.setSpan(
+                ForegroundColorSpan(colorProvider.getInactiveTextColor()),
+                initialText.indexOf(NUM_DOT) + 1,
+                initialText.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             return span
         }
         val enteredNumber = list.joinToString("").toDouble()
@@ -63,12 +84,12 @@ class MainViewModel @Inject constructor(private val colorProvider: ColorProvider
         var appendedString: String = ""
         val indexOfDot = list.indexOf(NUM_DOT)
         if (list.contains(NUM_DOT)) {
-            if(!yourFormattedString.contains(NUM_DOT)) {
+            if (!yourFormattedString.contains(NUM_DOT)) {
                 yourFormattedString = "$yourFormattedString."
             }
             val decimalDigits = list.subList(indexOfDot + 1, list.size)
             val afterDot = decimalDigits.joinToString("").toIntOrNull()
-            if(afterDot == null) {
+            if (afterDot == null) {
                 appendedString = "00"
             } else {
                 appendedString = when {
@@ -87,22 +108,23 @@ class MainViewModel @Inject constructor(private val colorProvider: ColorProvider
             appendedString = ".00"
         }
 
-        val s = "AED $yourFormattedString${appendedString}"
-        val spannableString = SpannableString(s)
+        val currencyPrefix = stringProvider.getString(R.string.label_aed) + " "
+        val completeString = "$currencyPrefix$yourFormattedString${appendedString}"
+        val spannableString = SpannableString(completeString)
         spannableString.setSpan(
             ForegroundColorSpan(colorProvider.getActiveTextColor()),
-            0, 3,
+            0, currencyPrefix.length - 1,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         spannableString.setSpan(
             ForegroundColorSpan(colorProvider.getActiveTextColor()),
-            4,
-            yourFormattedString.length + 4,
+            currencyPrefix.length,
+            yourFormattedString.length + currencyPrefix.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         spannableString.setSpan(
             ForegroundColorSpan(colorProvider.getInactiveTextColor()),
-            yourFormattedString.length + 4, s.length,
+            yourFormattedString.length + currencyPrefix.length, completeString.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         return spannableString

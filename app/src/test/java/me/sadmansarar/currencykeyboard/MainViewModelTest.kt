@@ -2,16 +2,25 @@ package me.sadmansarar.currencykeyboard
 
 import me.sadmansarar.currencykeyboard.MainViewModel.Companion.NUM_DEL
 import me.sadmansarar.currencykeyboard.MainViewModel.Companion.NUM_DOT
+import me.sadmansarar.currencykeyboard.providers.ColorProvider
+import me.sadmansarar.currencykeyboard.providers.StringProvider
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito
 
 class MainViewModelTest {
     private lateinit var  model :MainViewModel
 
     @Before
     fun setUp() {
-        model = MainViewModel()
+        model = object: MainViewModel(
+            Mockito.mock(ColorProvider::class.java),
+            Mockito.mock(StringProvider::class.java)
+        ) {
+            override fun updateText() {
+            }
+        }
     }
 
     @Test
